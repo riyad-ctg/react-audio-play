@@ -46,7 +46,11 @@ export const AudioPlayer = forwardRef<AudioPlayerRef | undefined, AudioInterface
     const [hasError, setHasError] = useState<boolean>(false);
 
     useEffect(() => {
-      handleReload();
+      // filter out audio.elm operation
+      setIsPlaying(false);
+      setTotalTime('--:--');
+      setCanPlay(false);
+      setHasError(false);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [src]);
 
